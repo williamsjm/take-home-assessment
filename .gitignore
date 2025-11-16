@@ -1,0 +1,27 @@
+# Claude Code files (do not commit)
+CLAUDE.md
+PROGRESS.md
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+firebase-debug.log
+
+# Build outputs
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
