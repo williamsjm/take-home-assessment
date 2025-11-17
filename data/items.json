@@ -30,13 +30,243 @@
     "price": 1199
   },
   {
-    "name": "Test Item",
-    "price": 99.99,
-    "id": 1763338400530
+    "id": 6,
+    "name": "Wireless Mouse",
+    "category": "Electronics",
+    "price": 79
   },
   {
-    "name": "Test Item",
-    "price": 99.99,
-    "id": 1763338492279
+    "id": 7,
+    "name": "Mechanical Keyboard",
+    "category": "Electronics",
+    "price": 149
+  },
+  {
+    "id": 8,
+    "name": "Webcam HD",
+    "category": "Electronics",
+    "price": 89
+  },
+  {
+    "id": 9,
+    "name": "USB-C Hub",
+    "category": "Electronics",
+    "price": 59
+  },
+  {
+    "id": 10,
+    "name": "Desk Lamp LED",
+    "category": "Furniture",
+    "price": 45
+  },
+  {
+    "id": 11,
+    "name": "Monitor Arm",
+    "category": "Furniture",
+    "price": 129
+  },
+  {
+    "id": 12,
+    "name": "Cable Organizer",
+    "category": "Accessories",
+    "price": 25
+  },
+  {
+    "id": 13,
+    "name": "Laptop Stand",
+    "category": "Accessories",
+    "price": 49
+  },
+  {
+    "id": 14,
+    "name": "External SSD 1TB",
+    "category": "Electronics",
+    "price": 179
+  },
+  {
+    "id": 15,
+    "name": "Portable Charger",
+    "category": "Electronics",
+    "price": 35
+  },
+  {
+    "id": 16,
+    "name": "Desk Mat",
+    "category": "Accessories",
+    "price": 29
+  },
+  {
+    "id": 17,
+    "name": "Bookshelf",
+    "category": "Furniture",
+    "price": 249
+  },
+  {
+    "id": 18,
+    "name": "Plant Pot",
+    "category": "Decor",
+    "price": 19
+  },
+  {
+    "id": 19,
+    "name": "Wall Art Frame",
+    "category": "Decor",
+    "price": 89
+  },
+  {
+    "id": 20,
+    "name": "Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 129
+  },
+  {
+    "id": 21,
+    "name": "Smart Watch",
+    "category": "Electronics",
+    "price": 299
+  },
+  {
+    "id": 22,
+    "name": "Fitness Tracker",
+    "category": "Electronics",
+    "price": 99
+  },
+  {
+    "id": 23,
+    "name": "Water Bottle",
+    "category": "Accessories",
+    "price": 24
+  },
+  {
+    "id": 24,
+    "name": "Notebook Set",
+    "category": "Stationery",
+    "price": 15
+  },
+  {
+    "id": 25,
+    "name": "Pen Collection",
+    "category": "Stationery",
+    "price": 12
+  },
+  {
+    "id": 26,
+    "name": "Whiteboard",
+    "category": "Office",
+    "price": 79
+  },
+  {
+    "id": 27,
+    "name": "File Cabinet",
+    "category": "Office",
+    "price": 189
+  },
+  {
+    "id": 28,
+    "name": "Task Light",
+    "category": "Office",
+    "price": 39
+  },
+  {
+    "id": 29,
+    "name": "Printer",
+    "category": "Electronics",
+    "price": 199
+  },
+  {
+    "id": 30,
+    "name": "Shredder",
+    "category": "Office",
+    "price": 69
+  },
+  {
+    "id": 31,
+    "name": "Laptop Backpack",
+    "category": "Accessories",
+    "price": 89
+  },
+  {
+    "id": 32,
+    "name": "Monitor Privacy Screen",
+    "category": "Accessories",
+    "price": 45
+  },
+  {
+    "id": 33,
+    "name": "Wireless Charger",
+    "category": "Electronics",
+    "price": 29
+  },
+  {
+    "id": 34,
+    "name": "Phone Stand",
+    "category": "Accessories",
+    "price": 19
+  },
+  {
+    "id": 35,
+    "name": "Tablet",
+    "category": "Electronics",
+    "price": 599
+  },
+  {
+    "id": 36,
+    "name": "E-Reader",
+    "category": "Electronics",
+    "price": 139
+  },
+  {
+    "id": 37,
+    "name": "Smart Thermostat",
+    "category": "Electronics",
+    "price": 249
+  },
+  {
+    "id": 38,
+    "name": "Smart Plug",
+    "category": "Electronics",
+    "price": 25
+  },
+  {
+    "id": 39,
+    "name": "LED Strip Lights",
+    "category": "Decor",
+    "price": 35
+  },
+  {
+    "id": 40,
+    "name": "Air Purifier",
+    "category": "Appliances",
+    "price": 149
+  },
+  {
+    "id": 41,
+    "name": "Humidifier",
+    "category": "Appliances",
+    "price": 79
+  },
+  {
+    "id": 42,
+    "name": "Coffee Maker",
+    "category": "Appliances",
+    "price": 89
+  },
+  {
+    "id": 43,
+    "name": "Electric Kettle",
+    "category": "Appliances",
+    "price": 45
+  },
+  {
+    "id": 44,
+    "name": "Desk Organizer",
+    "category": "Office",
+    "price": 29
+  },
+  {
+    "id": 45,
+    "name": "Laptop Sleeve",
+    "category": "Accessories",
+    "price": 25
   }
 ]
