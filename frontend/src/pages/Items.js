@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useData } from '../state/DataContext';
 import { Link } from 'react-router-dom';
-import { List as FixedSizeList } from 'react-window';
+import { List } from 'react-window';
 
 function Items() {
   const { items, loading, error, pagination, fetchItems } = useData();
@@ -49,7 +49,7 @@ function Items() {
     }
   };
 
-  // Row component for virtualized list
+  // Row component for virtualized list (react-window v2.x API)
   const Row = ({ index, style }) => {
     const item = items[index];
     return (
@@ -120,14 +120,13 @@ function Items() {
 
       {items.length > 0 && (
         <div style={{ border: '1px solid #ddd', borderRadius: 4, overflow: 'hidden' }}>
-          <FixedSizeList
-            height={400}
-            itemCount={items.length}
-            itemSize={50}
-            width="100%"
-          >
-            {Row}
-          </FixedSizeList>
+          <List
+            rowComponent={Row}
+            rowProps={{}}
+            rowCount={items.length}
+            rowHeight={50}
+            style={{ height: 400, width: '100%' }}
+          />
         </div>
       )}
 
