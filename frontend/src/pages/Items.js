@@ -53,25 +53,27 @@ function Items() {
   const Row = ({ index, style }) => {
     const item = items[index];
     return (
-      <div
-        style={{
-          ...style,
-          display: 'flex',
-          alignItems: 'center',
-          borderBottom: '1px solid #eee',
-          paddingLeft: 12
-        }}
-      >
-        <Link
-          to={'/items/' + item.id}
+      <div style={style}>
+        <div
           style={{
-            textDecoration: 'none',
-            color: '#007bff',
-            fontSize: 14
+            display: 'flex',
+            alignItems: 'center',
+            borderBottom: '1px solid #eee',
+            paddingLeft: 12,
+            height: '100%'
           }}
         >
-          {item.name}
-        </Link>
+          <Link
+            to={'/items/' + item.id}
+            style={{
+              textDecoration: 'none',
+              color: '#007bff',
+              fontSize: 14
+            }}
+          >
+            {item.name}
+          </Link>
+        </div>
       </div>
     );
   };
