@@ -2,16 +2,21 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const router = express.Router();
-const DATA_PATH = path.join(__dirname, '../../data/items.json');
+const DATA_PATH = path.join(__dirname, '../../../data/items.json');
 
 let statsCache = null;
 
 // watch for file changes and invalidate cache
-fs.watch(DATA_PATH, (eventType) => {
-  if (eventType === 'change') {
-    statsCache = null;
-  }
-});
+try {
+  fs.watch(DATA_PATH, (eventType) => {
+    if (eventType === 'change') {
+      statsCache = null;
+    }
+  });
+} catch (err) {
+  // File may not exist in test environment, that's ok
+  console.warn('Could not watch data file:', err.message);
+}
 
 function calculateStats(items) {
   return {

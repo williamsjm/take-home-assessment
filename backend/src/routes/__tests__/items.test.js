@@ -38,6 +38,41 @@ describe('Items API', () => {
     });
   });
 
+  describe('Pagination', () => {
+    it('should return paginated results with metadata', async () => {
+      const res = await request(app)
+        .get('/api/items?page=1&pageSize=5')
+        .expect(200);
+
+      expect(res.body).toHaveProperty('data');
+      expect(res.body).toHaveProperty('total');
+      expect(res.body).toHaveProperty('page', 1);
+      expect(res.body).toHaveProperty('pageSize', 5);
+      expect(res.body).toHaveProperty('totalPages');
+      expect(res.body.data.length).toBeLessThanOrEqual(5);
+    });
+
+    it('should handle page 2 correctly', async () => {
+      const res = await request(app)
+        .get('/api/items?page=2&pageSize=3')
+        .expect(200);
+
+      expect(res.body.page).toBe(2);
+      expect(res.body.data.length).toBeLessThanOrEqual(3);
+    });
+
+    it('should work with search and pagination together', async () => {
+      const res = await request(app)
+        .get('/api/items?q=laptop&page=1&pageSize=2')
+        .expect(200);
+
+      expect(res.body.data).toBeInstanceOf(Array);
+      res.body.data.forEach(item => {
+        expect(item.name.toLowerCase()).toContain('laptop');
+      });
+    });
+  });
+
   describe('GET /api/items/:id', () => {
     it('should return a single item by id', async () => {
       const res = await request(app)
