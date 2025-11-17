@@ -172,8 +172,8 @@ function Items() {
             rowComponent={Row}
             rowProps={{}}
             rowCount={items.length}
-            rowHeight={84}
-            style={{ height: 540, width: '100%' }}
+            rowHeight={80}
+            style={{ height: 560, width: '100%' }}
           />
         </div>
       )}
