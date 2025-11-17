@@ -37,4 +37,39 @@ describe('Items API', () => {
       expect(item.name.toLowerCase()).toContain('laptop');
     });
   });
+
+  describe('GET /api/items/:id', () => {
+    it('should return a single item by id', async () => {
+      const res = await request(app)
+        .get('/api/items/1')
+        .expect(200);
+
+      expect(res.body).toHaveProperty('id', 1);
+      expect(res.body).toHaveProperty('name');
+    });
+
+    it('should return 404 for non-existent item', async () => {
+      const res = await request(app)
+        .get('/api/items/99999')
+        .expect(404);
+    });
+  });
+
+  describe('POST /api/items', () => {
+    it('should create a new item', async () => {
+      const newItem = {
+        name: 'Test Item',
+        price: 99.99
+      };
+
+      const res = await request(app)
+        .post('/api/items')
+        .send(newItem)
+        .expect(201);
+
+      expect(res.body).toHaveProperty('id');
+      expect(res.body.name).toBe(newItem.name);
+      expect(res.body.price).toBe(newItem.price);
+    });
+  });
 });
