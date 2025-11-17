@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useData } from '../state/DataContext';
 import { Link } from 'react-router-dom';
+import { FixedSizeList } from 'react-window';
 
 function Items() {
   const { items, pagination, fetchItems } = useData();
@@ -48,6 +49,16 @@ function Items() {
     }
   };
 
+  // Row component for virtualized list
+  const Row = ({ index, style }) => {
+    const item = items[index];
+    return (
+      <div style={style}>
+        <Link to={'/items/' + item.id}>{item.name}</Link>
+      </div>
+    );
+  };
+
   return (
     <div style={{ padding: 16 }}>
       {/* Search input */}
@@ -63,13 +74,16 @@ function Items() {
 
       {!items.length && <p>No items found.</p>}
 
-      {items.length > 0 && <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            <Link to={'/items/' + item.id}>{item.name}</Link>
-          </li>
-        ))}
-      </ul>}
+      {items.length > 0 && (
+        <FixedSizeList
+          height={400}
+          itemCount={items.length}
+          itemSize={50}
+          width="100%"
+        >
+          {Row}
+        </FixedSizeList>
+      )}
 
       {/* Pagination controls */}
       <div style={{ marginTop: 16, display: 'flex', gap: 8, alignItems: 'center' }}>
