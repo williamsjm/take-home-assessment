@@ -13,18 +13,40 @@ async function readData() {
 router.get('/', async (req, res, next) => {
   try {
     const data = await readData();
-    const { limit, q } = req.query;
+    const { limit, q, page, pageSize } = req.query;
     let results = data;
 
+    // Apply search filter
     if (q) {
-      // Simple substring search (sub‑optimal)
       results = results.filter(item => item.name.toLowerCase().includes(q.toLowerCase()));
     }
 
+    const total = results.length;
+
+    // Handle pagination if page/pageSize provided
+    if (page && pageSize) {
+      const pageNum = parseInt(page);
+      const size = parseInt(pageSize);
+      const startIndex = (pageNum - 1) * size;
+      const endIndex = startIndex + size;
+      results = results.slice(startIndex, endIndex);
+
+      // Return paginated response with metadata
+      return res.json({
+        data: results,
+        total,
+        page: pageNum,
+        pageSize: size,
+        totalPages: Math.ceil(total / size)
+      });
+    }
+
+    // Legacy support: limit param (for backwards compatibility)
     if (limit) {
       results = results.slice(0, parseInt(limit));
     }
 
+    // Return simple array for non-paginated requests
     res.json(results);
   } catch (err) {
     next(err);
