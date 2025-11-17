@@ -4,6 +4,8 @@ const DataContext = createContext();
 
 export function DataProvider({ children }) {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [pagination, setPagination] = useState({
     total: 0,
     page: 1,
@@ -12,6 +14,8 @@ export function DataProvider({ children }) {
   });
 
   const fetchItems = useCallback(async (signal, params = {}) => {
+    setLoading(true);
+    setError(null);
     try {
       const { page = 1, pageSize = 20, search = '' } = params;
 
@@ -45,12 +49,15 @@ export function DataProvider({ children }) {
       // Ignore abort errors
       if (err.name !== 'AbortError') {
         console.error('Failed to fetch items:', err);
+        setError('Failed to load items. Please try again.');
       }
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   return (
-    <DataContext.Provider value={{ items, pagination, fetchItems }}>
+    <DataContext.Provider value={{ items, loading, error, pagination, fetchItems }}>
       {children}
     </DataContext.Provider>
   );
