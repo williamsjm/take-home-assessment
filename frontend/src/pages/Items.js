@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useData } from '../state/DataContext';
 import { Link } from 'react-router-dom';
-import { FixedSizeList } from 'react-window';
+import { List as FixedSizeList } from 'react-window';
 
 function Items() {
   const { items, loading, error, pagination, fetchItems } = useData();
