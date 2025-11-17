@@ -137,15 +137,28 @@ function App() {
           color: '#6b7280',
           fontWeight: 500
         }}>
-          Made with <span style={{ color: '#ef4444' }}>♥</span> for the Take-Home Assessment
-        </p>
-        <p style={{
-          margin: '8px 0 0 0',
-          fontSize: 12,
-          color: '#9ca3af',
-          fontWeight: 500
-        }}>
-          © 2025 Items Gallery. All rights reserved.
+          Made by{' '}
+          <a
+            href="https://github.com/williamsjm"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: '#6366f1',
+              textDecoration: 'none',
+              fontWeight: 600,
+              transition: 'color 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#4f46e5';
+              e.currentTarget.style.textDecoration = 'underline';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#6366f1';
+              e.currentTarget.style.textDecoration = 'none';
+            }}
+          >
+            Williams Mejias
+          </a>
         </p>
       </footer>
     </DataProvider>
