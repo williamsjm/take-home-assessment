@@ -4,12 +4,43 @@ const DataContext = createContext();
 
 export function DataProvider({ children }) {
   const [items, setItems] = useState([]);
+  const [pagination, setPagination] = useState({
+    total: 0,
+    page: 1,
+    pageSize: 20,
+    totalPages: 0
+  });
 
-  const fetchItems = useCallback(async (signal) => {
+  const fetchItems = useCallback(async (signal, params = {}) => {
     try {
-      const res = await fetch('http://localhost:3001/api/items?limit=500', { signal });
+      const { page = 1, pageSize = 20, search = '' } = params;
+
+      // Build query string
+      const queryParams = new URLSearchParams({
+        page: page.toString(),
+        pageSize: pageSize.toString()
+      });
+
+      if (search) {
+        queryParams.append('q', search);
+      }
+
+      const res = await fetch(`http://localhost:3001/api/items?${queryParams}`, { signal });
       const json = await res.json();
-      setItems(json);
+
+      // Handle paginated response
+      if (json.data) {
+        setItems(json.data);
+        setPagination({
+          total: json.total,
+          page: json.page,
+          pageSize: json.pageSize,
+          totalPages: json.totalPages
+        });
+      } else {
+        // Fallback for non-paginated response
+        setItems(json);
+      }
     } catch (err) {
       // Ignore abort errors
       if (err.name !== 'AbortError') {
@@ -19,7 +50,7 @@ export function DataProvider({ children }) {
   }, []);
 
   return (
-    <DataContext.Provider value={{ items, fetchItems }}>
+    <DataContext.Provider value={{ items, pagination, fetchItems }}>
       {children}
     </DataContext.Provider>
   );
