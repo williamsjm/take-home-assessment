@@ -1,0 +1,341 @@
+/* Container */
+.container {
+  padding: 24px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header */
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #111827 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Search */
+.searchContainer {
+  margin-bottom: 28px;
+}
+
+.searchLabel {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.searchInputWrapper {
+  position: relative;
+  max-width: 500px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #9ca3af;
+  transition: color 0.3s ease;
+  pointer-events: none;
+}
+
+.searchIcon.focused {
+  color: #6366f1;
+}
+
+.searchInput {
+  padding: 13px 16px 13px 48px;
+  width: 100%;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+}
+
+.searchInput:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), 0 4px 12px rgba(99, 102, 241, 0.15);
+}
+
+/* Loading Skeleton */
+.loadingContainer {
+  padding: 0 20px;
+}
+
+.skeletonItem {
+  height: 72px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Error State */
+.errorBanner {
+  padding: 14px 18px;
+  background-color: #fef2f2;
+  color: #991b1b;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 2px solid #fecaca;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fafbfc;
+  border-radius: 16px;
+  border: 2px dashed #e5e7eb;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.emptyTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.emptyDescription {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Items List */
+.listContainer {
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #fafbfc;
+  padding: 12px 0;
+}
+
+.rowWrapper {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.itemLink {
+  text-decoration: none;
+}
+
+.itemCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  height: 60px;
+}
+
+.itemCard:hover {
+  border-color: #6366f1;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15), 0 2px 8px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px) scale(1.005);
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.itemIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.itemCard:hover .itemIcon {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  color: #ffffff;
+}
+
+.itemName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  transition: color 0.3s ease;
+  margin-bottom: 2px;
+}
+
+.itemCard:hover .itemName {
+  color: #6366f1;
+}
+
+.itemCategory {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.itemArrow {
+  font-size: 20px;
+  color: #9ca3af;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+.itemCard:hover .itemArrow {
+  color: #6366f1;
+  transform: translateX(4px);
+}
+
+/* Pagination */
+.paginationContainer {
+  margin-top: 28px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.paginationButton {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #6366f1;
+  border: 2px solid #6366f1;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  min-width: 100px;
+}
+
+.paginationButton:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border-color: #f3f4f6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.paginationButton:not(:disabled):hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.paginationButton.primary {
+  background-color: #6366f1;
+  color: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+}
+
+.paginationButton.primary:not(:disabled):hover {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.prevButton {
+  margin-right: 8px;
+}
+
+.nextButton {
+  margin-left: 8px;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 6px;
+}
+
+.pageButton {
+  padding: 10px 14px;
+  background-color: #ffffff;
+  color: #6366f1;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.pageButton.active {
+  background-color: #6366f1;
+  color: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+}
+
+.pageButton:not(.active):not(:disabled):hover {
+  border-color: #6366f1;
+  transform: scale(1.05);
+}
+
+.pageButton:disabled {
+  cursor: not-allowed;
+}
+
+.pageDots {
+  padding: 10px 8px;
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Pagination Info */
+.paginationInfo {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
