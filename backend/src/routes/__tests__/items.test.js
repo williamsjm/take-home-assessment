@@ -14,6 +14,27 @@ describe('Items API', () => {
       .expect(200);
 
     expect(Array.isArray(res.body)).toBe(true);
-    // just checking it returns something for now
+    expect(res.body.length).toBeGreaterThan(0);
+  });
+
+  it('should respect limit parameter', async () => {
+    const res = await request(app)
+      .get('/api/items?limit=5')
+      .expect(200);
+
+    expect(res.body.length).toBeLessThanOrEqual(5);
+  });
+
+  // test search functionality
+  it('should filter items by query string', async () => {
+    const res = await request(app)
+      .get('/api/items?q=laptop')
+      .expect(200);
+
+    expect(Array.isArray(res.body)).toBe(true);
+    // all results should match the query
+    res.body.forEach(item => {
+      expect(item.name.toLowerCase()).toContain('laptop');
+    });
   });
 });
