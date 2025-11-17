@@ -5,17 +5,36 @@ import { Link } from 'react-router-dom';
 function Items() {
   const { items, pagination, fetchItems } = useData();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  // Debounce search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+      // Reset to page 1 when search changes
+      if (searchTerm !== debouncedSearch) {
+        setCurrentPage(1);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, debouncedSearch]);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    // Fetch with pagination params
-    fetchItems(controller.signal, { page: currentPage, pageSize: 20 });
+    // Fetch with pagination and search params
+    fetchItems(controller.signal, {
+      page: currentPage,
+      pageSize: 20,
+      search: debouncedSearch
+    });
 
     return () => {
       controller.abort();
     };
-  }, [fetchItems, currentPage]);
+  }, [fetchItems, currentPage, debouncedSearch]);
 
   const handlePrevious = () => {
     if (currentPage > 1) {
@@ -29,17 +48,28 @@ function Items() {
     }
   };
 
-  if (!items.length) return <p>Loading...</p>;
-
   return (
     <div style={{ padding: 16 }}>
-      <ul>
+      {/* Search input */}
+      <div style={{ marginBottom: 16 }}>
+        <input
+          type="text"
+          placeholder="Search items..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ padding: 8, width: 300 }}
+        />
+      </div>
+
+      {!items.length && <p>No items found.</p>}
+
+      {items.length > 0 && <ul>
         {items.map(item => (
           <li key={item.id}>
             <Link to={'/items/' + item.id}>{item.name}</Link>
           </li>
         ))}
-      </ul>
+      </ul>}
 
       {/* Pagination controls */}
       <div style={{ marginTop: 16, display: 'flex', gap: 8, alignItems: 'center' }}>
